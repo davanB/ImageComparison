@@ -1,34 +1,26 @@
-#
-# CMakeLists.txt
-#
-# Copyright (C) 2018 Kano Computing Ltd.
-# License: http://www.gnu.org/licenses/gpl-2.0.txt GNU GPLv2
-#
-# Build file for googletest-sample project
-#
+cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 
+project(ImageComparison)
+set (CMAKE_CXX_STANDARD 14)
 
-cmake_minimum_required (VERSION 2.8.11)
+# place binaries and libraries according to GNU standards
+#include(GNUInstallDirs)
+##set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
+#set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
+#set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR})
 
-set (CMAKE_CXX_STANDARD 11)
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-
-add_executable(
-	sample
-    src/main.cpp
-    src/obj.cpp
-    src/obj_operations.cpp
-)
-target_include_directories (
-    sample
-    PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/include
-)
-
-# Uncomment for tests
-include(CTest)
-enable_testing()
-
-if(BUILD_TESTING)
-    add_subdirectory (tests)
+# we use this to get code coverage
+if(CMAKE_CXX_COMPILER_ID MATCHES GNU)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
 endif()
+
+add_subdirectory(src)
+
+include(cmake/googletest.cmake)
+fetch_googletest(
+    ${PROJECT_SOURCE_DIR}/cmake
+    ${PROJECT_BINARY_DIR}/googletest
+    )
+
+enable_testing()
+add_subdirectory(test)

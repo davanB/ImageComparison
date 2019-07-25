@@ -1,13 +1,8 @@
-#include <iostream>
+#include "cxxopts.hpp"
+#include "CommandLineArgParser.h"
 
-#include "obj.hpp"
+int main(int argc, char** argv) {
+    auto args = ImageComparison::CommandLineArgParser::ParseCommandLineArguments(argc, argv);
 
-
-int main(int argc, char *argv[])
-{
-	Obj obj;
-	std::cout << "Valid: " << obj.is_valid("Kano") << "\n";
-	std::cout << "Number: " << obj.get_number() << "\n";
-
-	return 0;
+    return 0;
 }

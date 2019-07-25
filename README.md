@@ -1,92 +1,75 @@
-# Sample google-test project
+[![Build Status](https://travis-ci.org/bast/gtest-demo.svg?branch=master)](https://travis-ci.org/bast/gtest-demo/builds)
+[![Coverage Status](https://coveralls.io/repos/bast/gtest-demo/badge.png?branch=master)](https://coveralls.io/r/bast/gtest-demo?branch=master)
+[![License](https://img.shields.io/badge/license-%20BSD--3-blue.svg)](../master/LICENSE)
 
-This is a sample project using the Google Test/Google Mock framework with
-some examples of a few tests.
 
-The framework is well documented at:
- * [Google Test](https://github.com/google/googletest/blob/master/googletest/docs/Documentation.md)
- * [Google Mock](https://github.com/google/googletest/blob/master/googlemock/docs/Documentation.md)
+# gtest-demo
 
-## Requirements
+C/C++ unit test demo using [Google Test](https://code.google.com/p/googletest) deployed to
+[Travis-CI](https://travis-ci.org/bast/gtest-demo/builds) with test coverage
+deployed to [Coveralls](https://coveralls.io/r/bast/gtest-demo).
 
-In order to get things working, you will need:
+- [Build and test history](https://travis-ci.org/bast/gtest-demo/builds)
+- [Code coverage](https://coveralls.io/r/bast/gtest-demo)
+- Licensed under [BSD-3](../master/LICENSE)
 
- * C++ compiler (ideally C++11 compatible)
- * Make
- * CMake (> 2.8.11)
+This demo uses the approach presented by Craig Scott in https://crascit.com/2015/07/25/cmake-gtest/.
 
-## Building
 
-Compile with:
+## How to build this demo
 
-```
-> cmake .
-> make
-```
-
-Run main executable:
-
-```
-> ./sample
+```bash
+git clone https://github.com/bast/gtest-demo.git
+cd gtest-demo
+mkdir build
+cd build
+cmake ..
+cmake --build .
 ```
 
-Run tests:
 
-```
-./tests/tests
-```
+## Running the tests
 
-You can build and run the tests all this with one line:
-
+Either using `ctest`:
 ```
-> cmake . && make && ./tests/tests
-```
+$ ctest
 
-## Structure
+Running tests...
+Test project /home/user/gtest-demo/build
+    Start 1: unit
+1/1 Test #1: unit .............................   Passed    0.00 sec
 
-```
-./
-├── CMakeLists.txt                // Main project CMake definition
-├── src/                          // Program to test
-│     ├── main.cpp                // Program entrance point
-│     ├── *.cpp                   // Class definitions
-│     ├── include/
-│     └──  *.hpp                  // Header files
-└── tests/  // Tests
-      ├── CMakeLists.txt          // CMake file for tests
-      ├── src/
-      │   ├── fixtures/
-      │   │   └── *.hpp           // Fixture definitions
-      │   ├── mocks/
-      │   │   └── *.hpp           // Mock definitions
-      │   ├── tests.cpp           // Test program definition
-      │   └── *.cpp               // Tests
-      └── vendor/                 // 3rd-party google-test framework
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.00 sec
 ```
 
-## How to modify
+Or directly using `unit_tests`:
+```
+$ ./bin/unit_tests
 
-To add new source files, create the files in the `./src/` and `./src/include`
-directories and add an entry into the `./CMakeLists.txt` file for each new `.cpp` file.
+[==========] Running 2 tests from 1 test case.
+[----------] Global test environment set-up.
+[----------] 2 tests from example
+[ RUN      ] example.add
+[       OK ] example.add (0 ms)
+[ RUN      ] example.subtract
+[       OK ] example.subtract (0 ms)
+[----------] 2 tests from example (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 2 tests from 1 test case ran. (1 ms total)
+[  PASSED  ] 2 tests.
 
 ```
-add_executable(
-	sample
-    src/main.cpp
-    ...
-    src/my_new_file.cpp
-)
-```
 
-To add new test files, create the files in the `./tests/src/` and
-`./tests/src/include` directories and add an entry into the
-`./tests/CMakeLists.txt` file for each new `.cpp` file.
 
-```
-add_executable(
-	tests
-	src/tests.cpp
-    ...
-	src/my_new_test.cpp
-)
-```
+## Acknowledgments
+
+- Container Travis setup thanks to [Joan Massich](https://github.com/massich).
+- Clean-up in CMake code thanks to [Claus Klein](https://github.com/ClausKlein).
+
+
+## References
+
+- https://crascit.com/2015/07/25/cmake-gtest/
