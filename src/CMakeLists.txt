@@ -1,15 +1,21 @@
-add_library(Main "")
+set(PARSER_SOURCES
+    CommandLineArgsParser.cpp
+    CommandLineArgs.cpp
+    CommandLineArgsParser.h 
+    CommandLineArgs.h 
+    cxxopts.hpp 
+)
 
-target_sources(
-    Main
-    PRIVATE
-        CommandLineArgParser.cpp
-    PUBLIC
-        ${CMAKE_CURRENT_LIST_DIR}/CommandLineArgParser.h
-    )
+# declare lib
+add_library(Parser STATIC 
+    ${PARSER_SOURCES}
+)
 
 target_include_directories(
-    Main
-    PUBLIC
-        ${CMAKE_CURRENT_LIST_DIR}
+    Parser PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}
     )
+
+add_executable(Main main.cpp)
+
+target_link_libraries(Main Parser)

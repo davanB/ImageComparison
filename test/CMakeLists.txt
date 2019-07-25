@@ -1,18 +1,11 @@
-add_executable(
-    unit_tests
-    CommandLineArgsParser_success.cpp
-    CommandLineArgsParser_fail.cpp
-    )
-
-target_link_libraries(
-    unit_tests
-    gtest_main
-    Main
-    )
+file(GLOB SRCS *.cpp)
+set(TEST_NAME parserTests)
+add_executable(${TEST_NAME} ${SRCS})
+#target_include_directories(${TEST_NAME} PUBLIC ${SRCS})
+#target_include_directories(${TEST_NAME} PUBLIC Parser)
+target_link_libraries(${TEST_NAME} Parser gtest_main)
 
 add_test(
-  NAME
-    unit
-  COMMAND
-    ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR}/unit_tests
+  NAME ${TEST_NAME}
+  COMMAND ${TEST_NAME}
   )

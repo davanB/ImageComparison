@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-//#include "~/Documents/School/Learning/LoblawTakeHome/ImageComparison/src/CommandLineArgsParser.h"
+#include "CommandLineArgsParser.h"
 
 TEST(CommandLineArgsParser, subtract)
 {
