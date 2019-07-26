@@ -1,13 +1,20 @@
 #pragma once
 
-#include "InputCSVData"
-#include<string>
+#include "InputCSVData.h"
+#include <string>
 
 namespace ImageComparison
 {
     class CSVParser {
         public:
-        CSVParser(std::string& fileName);
-        std::vector<CSVInputData> ParseCSVFile() const;
-    }
+        CSVParser(const std::string& fileName);
+        ~CSVParser() = default;
+
+        std::vector<InputCSVData> ParseCSVFile() const;
+
+        private:
+        bool FileExists() const;
+
+        std::string mFilePath;
+    };
 }

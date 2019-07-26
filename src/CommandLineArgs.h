@@ -6,10 +6,12 @@ namespace ImageComparison
 {
     class CommandLineArgs {
         public:
-        CommandLineArgs(std::string& fileName) noexcept;
-        std::string GetFilePath() const noexcept;
+        explicit CommandLineArgs(std::string&& inputFile, std::string&& outputFile) noexcept;
+        std::string GetInputFilePath() const noexcept;
+        std::string GetOutputFilePath() const noexcept;
 
         private:
-        std::string mFilePath;
+        std::string mInputFilePath;
+        std::string mOutputFilePath;
     };
 } // namespace ImageComparison

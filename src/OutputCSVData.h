@@ -8,7 +8,7 @@ namespace ImageComparison
     class OutputCSVData {
         public:
         explicit OutputCSVData(InputCSVData imagePair, uint64_t simularityScore, float secondsTaken) noexcept;
-        ~OutputCSVData = default;
+        ~OutputCSVData() = default;
 
         OutputCSVData(OutputCSVData&& other) noexcept;
         OutputCSVData& operator=(OutputCSVData&& other) = delete;
@@ -19,7 +19,7 @@ namespace ImageComparison
 
         private:
         InputCSVData mImagePair;
-        uint64_t mSimularityScore
+        uint64_t mSimularityScore;
         float mSecondsTaken;
-    }
+    };
 }

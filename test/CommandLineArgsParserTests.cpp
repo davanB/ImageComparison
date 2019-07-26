@@ -24,21 +24,28 @@ TEST(CommandLineArgsParserTests, TestFunction)
 
 TEST(CommandLineArgsParserTests, NoThrow)
 {
-    auto argv = CreateInputArguments({programNameArg, "-f", "/some_path"});
+    auto argv = CreateInputArguments({programNameArg, "-in", "/some_path", "-out", "/anotherPath"});
     EXPECT_NO_THROW(auto args = ImageComparison::CommandLineArgParser::ParseCommandLineArguments(argv.size() - 1, argv.data()));
 }
 
-TEST(CommandLineArgsParserTests, includeFilePath)
+TEST(CommandLineArgsParserTests, ThrowNotEnoughArgs)
 {
-    auto argv = CreateInputArguments({programNameArg, "-f", "/some_path"});
-
-    auto args = ImageComparison::CommandLineArgParser::ParseCommandLineArguments(argv.size() - 1, argv.data());
-    EXPECT_STREQ(args.GetFilePath().data(), argv[1]);
+    auto argv = CreateInputArguments({programNameArg, "-in", "/some_path"});
+    EXPECT_THROW(auto args = ImageComparison::CommandLineArgParser::ParseCommandLineArguments(argv.size() - 1, argv.data(), std::exception));
 }
 
-TEST(CommandLineArgsParserTests, ExtraArgumentsNoThrow)
+TEST(CommandLineArgsParserTests, validArgs)
 {
-    auto argv = CreateInputArguments({programNameArg, "-f", "/some_path", "-a", "not_allowed"});
+    auto argv = CreateInputArguments({programNameArg, "-in", "/some_path", "-out", "/anotherPath"});
+
+    auto args = ImageComparison::CommandLineArgParser::ParseCommandLineArguments(argv.size() - 1, argv.data());
+    EXPECT_STREQ(args.GetInputFilePath().data(), argv[2]);
+    EXPECT_STREQ(args.GetOutputFilePath().data(), argv[4]);
+}
+
+TEST(CommandLineArgsParserTests, ExtraArgumentsThrow)
+{
+    auto argv = CreateInputArguments({programNameArg, "-in", "/some_path", "-out", "/anotherPath", "-a", "not_allowed"});
 
     EXPECT_THROW(auto args = ImageComparison::CommandLineArgParser::ParseCommandLineArguments(argv.size() - 1, argv.data()), std::exception);
 }
