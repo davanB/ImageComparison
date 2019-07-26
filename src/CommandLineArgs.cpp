@@ -5,4 +5,8 @@ namespace ImageComparison
     CommandLineArgs::CommandLineArgs(std::string& fileName) noexcept
     : mFilePath(std::move(fileName))
     {}
+
+    std::string CommandLineArgs::GetFilePath() const noexcept{
+        return mFilePath;
+    }
 }

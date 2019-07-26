@@ -16,6 +16,6 @@ target_include_directories(
         ${CMAKE_CURRENT_SOURCE_DIR}
     )
 
-add_executable(Main main.cpp)
+add_executable(ImageComparison main.cpp)
 
-target_link_libraries(Main Parser)
+target_link_libraries(ImageComparison Parser)

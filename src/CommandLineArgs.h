@@ -7,7 +7,7 @@ namespace ImageComparison
     class CommandLineArgs {
         public:
         CommandLineArgs(std::string& fileName) noexcept;
-        std::string GetFilePath() const;
+        std::string GetFilePath() const noexcept;
 
         private:
         std::string mFilePath;

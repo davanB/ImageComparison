@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "CommandLineArgsParser.h"
 
-TEST(CommandLineArgsParser, add)
+TEST(CommandLineArgsParserTests, add)
 {
     double res;
     ASSERT_TRUE(true);
