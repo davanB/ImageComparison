@@ -2,6 +2,7 @@
 #include "InputCSVData.h"
 #include "csv.h"
 #include <fstream>
+#include <iostream>
 
 namespace ImageComparison
 {
@@ -16,11 +17,9 @@ namespace ImageComparison
         }
 
         io::CSVReader<2> in(mFilePath);
-        in.read_header(io::ignore_no_column, "imageOne", "imageTwo");
         std::string imageOne; 
         std::string imageTwo; 
         while(in.read_row(imageOne, imageTwo)){
-            // do stuff with the data
             inputData.emplace_back(imageOne, imageTwo);
         }
 
@@ -29,6 +28,7 @@ namespace ImageComparison
 
     bool CSVParser::FileExists() const {
         std::ifstream f(mFilePath.c_str());
+        std::cout << mFilePath << std::endl;
         return f.good();
     }
 }
