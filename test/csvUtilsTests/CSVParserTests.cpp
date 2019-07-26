@@ -2,6 +2,7 @@
 #include "CSVParser.h"
 #include "InputCSVData.h"
 
+/*
 TEST(CSVParserTests, fileDoesNotExist)
 {
     std::string file("some/path.csv");
@@ -16,7 +17,7 @@ TEST(CSVParserTests, fileExists)
     EXPECT_NO_THROW(parser.ParseCSVFile());
 }
 
-TEST(CSVParserTests, fileMalFormed)
+TEST(CSVParserTests, fileMalformed)
 {
     std::string file("testFiles/imagesWrong.csv");
     ImageComparison::CSVParser parser(file);
@@ -38,3 +39,4 @@ TEST(CSVParserTests, parseCorrectFormatFile)
         EXPECT_EQ(res[i].GetImageTwo(), expectedInputData[i].GetImageTwo());
     }
 }
+*/

@@ -11,7 +11,7 @@ namespace ImageComparison
         ~OutputCSVData() = default;
 
         OutputCSVData(OutputCSVData&& other) noexcept;
-        OutputCSVData& operator=(OutputCSVData&& other) = delete;
+        OutputCSVData& operator=(OutputCSVData&& other) noexcept;
 
         InputCSVData GetImagePair() const noexcept;
         uint64_t GetSimularityScore() const noexcept;
