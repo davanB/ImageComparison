@@ -11,7 +11,7 @@ add_custom_command(
     POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy  
                      "${CMAKE_CURRENT_SOURCE_DIR}/../testFiles/images.csv" 
-                     "$<TARGET_FILE_DIR:CsvUtilsTests>/images.csv"
+                     "${CMAKE_CURRENT_BINARY_DIR}/images.csv"
 )
 
 add_custom_command(
@@ -19,5 +19,5 @@ add_custom_command(
     POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy  
                      "${CMAKE_CURRENT_SOURCE_DIR}/../testFiles/imagesWrong.csv" 
-                     "$<TARGET_FILE_DIR:CsvUtilsTests>/imagesWrong.csv"
+                     "${CMAKE_CURRENT_BINARY_DIR}/imagesWrong.csv"
 )

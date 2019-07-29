@@ -12,14 +12,14 @@ TEST(CSVParserTests, fileDoesNotExist)
 
 TEST(CSVParserTests, fileExists)
 {
-    std::string file("/Users/davanb/Documents/School/Learning/LoblawTakeHome/ImageComparison/build/bin/images.csv");
+    std::string file("images.csv");
     ImageComparison::CSVParser parser(file);
     EXPECT_NO_THROW(parser.ParseCSVFile());
 }
 
 TEST(CSVParserTests, fileMalformed)
 {
-    std::string file("/Users/davanb/Documents/School/Learning/LoblawTakeHome/ImageComparison/build/bin/imagesWrong.csv");
+    std::string file("imagesWrong.csv");
     ImageComparison::CSVParser parser(file);
     EXPECT_ANY_THROW(parser.ParseCSVFile());
 }
@@ -28,7 +28,7 @@ TEST(CSVParserTests, parseCorrectFormatFile)
 {
     std::vector<ImageComparison::InputCSVData> expectedInputData = {ImageComparison::InputCSVData("image1.png", "image2.png"), 
                                                                     ImageComparison::InputCSVData("image3.png", "image4.png")};
-    std::string file("/Users/davanb/Documents/School/Learning/LoblawTakeHome/ImageComparison/build/bin/images.csv");
+    std::string file("images.csv");
     ImageComparison::CSVParser parser(file);
     auto res = parser.ParseCSVFile();
 

@@ -3,7 +3,7 @@
 #include "OutputCSVData.h"
 #include "InputCSVData.h"
 
-const std::string outputFileName = "/Users/davanb/Documents/School/Learning/LoblawTakeHome/ImageComparison/build/bin/output.csv";
+const std::string outputFileName = "output.csv";
 
 
 TEST(CSVWriterTests, writeOutputToFile)
