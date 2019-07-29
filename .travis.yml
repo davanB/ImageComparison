@@ -1,39 +1,18 @@
-
-dist: trusty
+dist: Xenial
 sudo: false
 language: cpp
 
-matrix:
-  include:
-    - compiler: gcc
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-5
-      env: COMPILER=g++-5
-    - compiler: clang
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-            - llvm-toolchain-precise-3.6
-          packages:
-            - clang-3.6
-      env: COMPILER=clang++-3.6
-    - compiler: clang
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-            - llvm-toolchain-precise-3.7
-          packages:
-            - clang-3.7
-      env: COMPILER=clang++-3.7
+os:
+  - osx
+  - windows
+
+compiler:
+  - clang
+  - gcc
+  - g++
 
 before_install:
-  - pip install --user cpp-coveralls
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then pip install --user cpp-coveralls          ; fi
 
 script:
   - mkdir build
