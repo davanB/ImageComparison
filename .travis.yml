@@ -2,7 +2,6 @@ language: cpp
 
 os:
   - osx
-  - windows
 
 compiler:
   - clang
@@ -10,7 +9,7 @@ compiler:
   - g++
 
 before_install:
-  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then pip install --user cpp-coveralls          ; fi
+  - pip install --user cpp-coveralls
 
 script:
   - mkdir build
