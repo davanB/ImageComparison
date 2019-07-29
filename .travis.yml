@@ -1,5 +1,3 @@
-dist: Xenial
-sudo: false
 language: cpp
 
 os:
