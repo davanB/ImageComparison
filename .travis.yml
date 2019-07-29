@@ -1,24 +1,83 @@
+language: cpp
 sudo: false
 
-language:
-  - cpp
+matrix:
+  exclude: # On OSX g++ is a symlink to clang++ by default
+    - os: osx
+      compiler: gcc
 
-os: osx
+  include:
+    # clang-7
+    - os: linux
+      name: "Xenial - clang 7"
+      dist: xenial
+      env: [USE_CC='/usr/bin/clang-7', USE_CXX='/usr/bin/clang++-7']
+      addons:
+        apt:
+          packages: ['clang-7', 'cmake']
+          sources: ['llvm-toolchain-xenial-7']
 
-osx_image: xcode11
+    # clang-8
+    - os: linux
+      name: "Xenial - clang 8"
+      dist: xenial
+      env: [USE_CC='/usr/bin/clang-8', USE_CXX='/usr/bin/clang++-8']
+      addons:
+        apt:
+          packages: ['clang-8', 'cmake']
+          sources: ['llvm-toolchain-xenial-8']
 
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
+
+
+    # gcc-7
+    - os: linux
+      name: "Xenial - gcc 7"
+      dist: xenial
+      env: [USE_CC='/usr/bin/gcc-7', USE_CXX='/usr/bin/g++-7']
+      addons:
+        apt:
+          packages: ['gcc-7', 'g++-7', 'cmake']
+          sources: ['ubuntu-toolchain-r-test']
+
+    # gcc-8
+    - os: linux
+      name: "Xenial - gcc 8"
+      dist: xenial
+      env: [USE_CC='/usr/bin/gcc-8', USE_CXX='/usr/bin/g++-8']
+      addons:
+        apt:
+          packages: ['gcc-8', 'g++-8', 'cmake']
+          sources: ['ubuntu-toolchain-r-test']
+
+    # gcc-9
+    - os: linux
+      name: "Xenial - gcc 9"
+      dist: xenial
+      env: [USE_CC='/usr/bin/gcc-9', USE_CXX='/usr/bin/g++-9']
+      addons:
+        apt:
+          packages: ['gcc-9', 'g++-9', 'cmake']
+          sources: ['ubuntu-toolchain-r-test']
+
+    - os: osx
+      osx_image: xcode9.4
+      compiler: clang
+
+    - os: osx
+      osx_image: xcode10.2
+      compiler: clang
+      
+    - os: windows
 
 before_install:
-  - pip install --user cpp-coveralls
-
-script:
+  # Override compilers set by Travis
+  - if [ ! -z "${USE_CC}" ]; then echo "Override CC=${USE_CC}"; eval "CC=${USE_CC}"; fi
+  - if [ ! -z "${USE_CXX}" ]; then echo "Override CXX=${USE_CXX}"; eval "CXX=${USE_CXX}"; fi
+  - echo ${CC} && ${CC} --version
+  - echo ${CXX} && ${CXX} --version
   - mkdir build
   - cd build
-  - cmake ..
+  - cmake -DCOVERAGE=1 ..
   - cmake --build .
   - ctest
 
