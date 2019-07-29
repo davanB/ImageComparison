@@ -7,13 +7,15 @@ os: osx
 
 osx_image: xcode11
 
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-
 before_install:
-  - pip install --user cpp-coveralls
+  - brew update
+  - brew install pyenv
+  - eval "$(pyenv init -)"
+  - pyenv install 2.7.6
+  - pyenv global 2.7.6
+  - pyenv rehash
+  - pip install cpp-coveralls
+  - pyenv rehash
 
 script:
   - mkdir build
