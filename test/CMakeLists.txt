@@ -1,2 +1,3 @@
 add_subdirectory(commandLineArgTests)
 add_subdirectory(csvUtilsTests)
+add_subdirectory(simularityEngineTests)

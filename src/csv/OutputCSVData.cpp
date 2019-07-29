@@ -11,7 +11,7 @@ namespace ImageComparison
 
     OutputCSVData::OutputCSVData(OutputCSVData&& other) noexcept
     : mImagePair(std::move(other.mImagePair))
-    , mSimularityScore(std::exchange(mSimularityScore, 0))
+    , mSimularityScore(std::exchange(other.mSimularityScore, 0))
     , mSecondsTaken(std::exchange(other.mSecondsTaken, 0.0)) {}
 
     OutputCSVData& OutputCSVData::operator=(OutputCSVData&& other) noexcept {
