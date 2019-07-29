@@ -3,6 +3,11 @@ dist: Xenial
 sudo: false
 language: cpp
 
+os:
+  - osx
+  - linux
+  - windows
+
 compiler:
   - clang
   - gcc
