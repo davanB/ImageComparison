@@ -6,6 +6,9 @@ namespace ImageComparison
 {
     class SimularityEngine : public SimularityGenerator {
         public:
+        SimularityEngine() = default;
+        ~SimularityEngine() = default;
+        
         std::vector<OutputCSVData> GenerateSimularity(const std::vector<InputCSVData>& imagePairs);
 
         private:

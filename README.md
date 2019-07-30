@@ -7,6 +7,22 @@
 - [Build and test history](https://travis-ci.com/davanB/ImageComparison/builds)
 - [Code coverage](https://coveralls.io/github/davanB/ImageComparison)
 
+# Dependencies
+
+OpenCV:
+Instructions for installing on OSX can be found below.
+https://www.learnopencv.com/install-opencv-4-on-macos/
+
+Instructions for installing on Windows:
+https://www.learnopencv.com/install-opencv3-on-windows/
+
+CMake:
+Instructions for installing CMake on Unix, OSX and Windows:
+https://cmake.org/install/
+
+GoogleTest:
+This project pulls source code from gtest directly from Github as recommended by Google.
+
 
 ## How to build this project
 

@@ -8,7 +8,8 @@ namespace ImageComparison
     CommandLineArgs CommandLineArgParser::ParseCommandLineArguments(int argc, char** argv) {
         // argv[0] is the program name
         if (argc < 3) {
-            throw std::exception();
+            std::cerr << "Not enough arguments, see ./ImageComparison -h for help." << std::endl;
+            exit(1);
         }
 
         cxxopts::Options options("ImageComparison", "Calculate image simularity.");
@@ -24,7 +25,8 @@ namespace ImageComparison
         }
 
         if (result.count("i") < 1 || result.count("o") < 1) {
-            //throw std::exception();
+            std::cerr << "Not enough arguments, see ./ImageComparison -h for help." << std::endl;
+            exit(1);
         }
 
         auto inFile = result["i"].as<std::string>();

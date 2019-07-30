@@ -12,8 +12,8 @@ namespace ImageComparison
         InputCSVData(const InputCSVData& other) = default;
         InputCSVData& operator=(const InputCSVData& other) = default;
 
-        InputCSVData(InputCSVData&& other) noexcept;
-        InputCSVData& operator=(InputCSVData&& other) noexcept;
+        InputCSVData(InputCSVData&& other) noexcept = default;
+        InputCSVData& operator=(InputCSVData&& other) noexcept = default;
 
         std::string GetImageOne() const noexcept;
         std::string GetImageTwo() const noexcept;

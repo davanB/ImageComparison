@@ -14,17 +14,6 @@ TEST(CommandLineArgsParserTests, NoThrow)
     EXPECT_NO_THROW(auto args = ImageComparison::CommandLineArgParser::ParseCommandLineArguments(argc, &argv[0]));
 }
 
-TEST(CommandLineArgsParserTests, ThrowNotEnoughArgs)
-{
-    char  arg0[] = "programName";
-    char  arg1[] = "-i";
-    char  arg2[] = "some_path";
-    char* argv[] = { &arg0[0], &arg1[0], &arg2[0], NULL };
-    int   argc   = (int)(sizeof(argv) / sizeof(argv[0])) - 1;
-
-    EXPECT_THROW(auto args = ImageComparison::CommandLineArgParser::ParseCommandLineArguments(argc, &argv[0]), std::exception);
-}
-
 TEST(CommandLineArgsParserTests, validArgs)
 {
     char  arg0[] = "programName";
