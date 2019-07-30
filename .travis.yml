@@ -19,7 +19,7 @@ script:
   - ctest
 
 after_success:
-  - coveralls --exclude build --exclude test --gcov-options '\-lp'
+  - coveralls -include ../src --exclude build --exclude test --exclude lib --exclude googletest --gcov-options '\-lp'
 
 notifications:
   email: false
