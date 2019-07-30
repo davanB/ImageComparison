@@ -1,18 +1,19 @@
-#include "Program.h"
+#include "mainProgram.h"
 #include "../csv/CSVParser.h"
 #include "../csv/InputCSVData.h"
 #include "../csv/OutputCSVData.h"
 #include "../simularityGenerator/simularityEngine.h"
 #include "../csv/CSVWriter.h"
 #include <vector>
+#include <iostream>
 
 namespace ImageComparison
 {
-    Program::Program(CommandLineArgs args)
+    MainProgram::MainProgram(CommandLineArgs args)
     : mProgramArgs(std::move(args))
     {}
 
-    void Program::Run() {
+    void MainProgram::Run() {
         CSVParser parser(mProgramArgs.GetInputFilePath());
         std::vector<InputCSVData> inputImages = parser.ParseCSVFile();
 

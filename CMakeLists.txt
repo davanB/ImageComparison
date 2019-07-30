@@ -3,8 +3,6 @@ cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
 project(ImageComparison)
 set (CMAKE_CXX_STANDARD 14)
 
-find_package(OpenCV REQUIRED)
-
 # place binaries and libraries according to GNU standards
 include(GNUInstallDirs)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})

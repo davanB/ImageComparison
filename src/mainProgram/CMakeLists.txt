@@ -1,6 +1,6 @@
 set(PROGRAM_SOURCES
-    Program.h 
-    Program.cpp
+    mainProgram.h 
+    mainProgram.cpp
 )
 
 # declare lib

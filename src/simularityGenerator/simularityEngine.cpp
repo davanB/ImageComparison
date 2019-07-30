@@ -7,10 +7,10 @@
 #include <chrono>
 
 // OpenCV
-//#include "opencv2/core.hpp"
-//#include "opencv2/core/ocl.hpp"
-//#include "opencv2/highgui.hpp"
-//#include "opencv2/img_hash.hpp"
+//#include "opencv4/opencv2/core.hpp"
+//#include "opencv4/opencv2/core/ocl.hpp"
+//#include "opencv4/opencv2/highgui.hpp"
+//#include "opencv4/opencv2/img_hash.hpp"
 
 namespace ImageComparison
 {

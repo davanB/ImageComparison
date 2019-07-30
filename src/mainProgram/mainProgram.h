@@ -4,9 +4,9 @@
 
 namespace ImageComparison
 {
-    class Program {
+    class MainProgram {
         public:
-        Program(CommandLineArgs args);
+        MainProgram(CommandLineArgs args);
         void Run();
 
         private:

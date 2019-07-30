@@ -2,6 +2,7 @@
 #include "OutputCSVData.h"
 #include <string>
 #include <fstream>
+#include<iostream>
 
 namespace ImageComparison
 {
@@ -18,7 +19,9 @@ namespace ImageComparison
 
     bool CSVWriter::WriteResultsToCSV(const std::vector<OutputCSVData>& outputData) {
         try {
-            mFile.open (mOutputFile, std::ofstream::out);
+            if (mFile.good() == false || mFile.is_open() == false) {
+                return false;
+            }
 
             for (const auto& record : outputData) {
                 mFile << record.GetImagePair().GetImageOne() << ","
@@ -27,6 +30,7 @@ namespace ImageComparison
                     << record.GetSecondsTaken() << "\n";
             }
 
+            mFile.flush();
             mFile.close();
             return true;
         } catch (...) {
