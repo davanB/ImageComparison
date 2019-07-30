@@ -19,7 +19,7 @@ script:
   - ctest
 
 after_success:
-  - coveralls --verbose -include ../src --exclude build --exclude test --exclude lib --exclude googletest --gcov-options '\-lp'
+  - coveralls --verbose -include $TRAVIS_BUILD_DIR/src --exclude build --exclude test --exclude lib --exclude googletest --gcov-options '\-lp'
 
 notifications:
   email: false
