@@ -60,6 +60,15 @@ Examples: The following are all accepted
 ./ImageComparison --inputFile=~/Documents/in.csv=--outputFile ~/Documents/in.cs
 ```
 
+### CSV input file format
+ ```
+ No column headers are needed.
+ The absolute path to each image must be provided.
+ 
+ example:
+ /some/path/imageOne.png,/another/path/imageTwo.png
+ ```
+
 # Design Decisions
 
 ## Language of choice
@@ -82,7 +91,7 @@ A few lightweight, header-only libraries were used to speed up development.
 
 [CMake](https://cmake.org/) was used to build the project. I have never had to work on a project that could be run on OSX and Windows so this was a challenge. I had a feeling using XCode was not an option so I looked for alternatives. At a previous coop, we used [Bazel](https://bazel.build/). It has been a few years since then so I had forgoten how things are set up. I decided on CMake since it is more widlety used and so I could draw from more examples. It was difficult to learn. Easily the most difficult part of this project.
 
-GoogleTest source code is downloaded from GitHub directly and statically compiled with the projext as recommened by Google. The CMakeLists.txt files exist in every directory. You call the file in the root which recursively calls identically named files in lower level directories.
+GoogleTest source code is downloaded from GitHub directly and statically compiled with the project as recommened by Google. The CMakeLists.txt files exist in every directory. You call the file in the root which recursively calls identically named files in lower level directories.
 
 ### CI
 
@@ -91,7 +100,6 @@ GoogleTest source code is downloaded from GitHub directly and statically compile
 I tried to use Coveralls to get test coverage but I could not get it to work.
 
 ## Other considerations
-
 
 ### Documentation
 
