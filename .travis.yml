@@ -9,7 +9,7 @@ compiler:
   - g++
   
 before_install:
-  - sudo pip install cpp-coveralls
+  - pip install cpp-coveralls
   - brew install opencv
 
 script:
