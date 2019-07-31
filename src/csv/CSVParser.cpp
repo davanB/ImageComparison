@@ -12,7 +12,7 @@ namespace ImageComparison
     std::vector<InputCSVData> CSVParser::ParseCSVFile() const {
         std::vector<InputCSVData> inputData;
 
-        if (FileExists() == false) {
+        if (InputFileExists() == false) {
             throw std::invalid_argument("File does not exist");
         }
 
@@ -20,15 +20,22 @@ namespace ImageComparison
         std::string imageOne; 
         std::string imageTwo; 
         while(in.read_row(imageOne, imageTwo)){
+            if (FileExists(imageOne) == false || FileExists(imageTwo) == false) {
+                throw std::invalid_argument("input image does not exist");
+            }
             inputData.emplace_back(imageOne, imageTwo);
         }
 
         return inputData;
     }
 
-    bool CSVParser::FileExists() const {
+    bool CSVParser::FileExists(const std::string& file) const {
+        std::ifstream f(file.c_str());
+        return f.good();
+    }
+
+    bool CSVParser::InputFileExists() const {
         std::ifstream f(mFilePath.c_str());
-        std::cout << mFilePath << std::endl;
         return f.good();
     }
 }

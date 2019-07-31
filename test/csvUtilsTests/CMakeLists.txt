@@ -21,3 +21,35 @@ add_custom_command(
                      "${CMAKE_CURRENT_SOURCE_DIR}/../testFiles/imagesWrong.csv" 
                      "${CMAKE_CURRENT_BINARY_DIR}/imagesWrong.csv"
 )
+
+add_custom_command(
+    TARGET CsvUtilsTests 
+    POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy  
+                     "${CMAKE_CURRENT_SOURCE_DIR}/../testFiles/image1.png" 
+                     "${CMAKE_CURRENT_BINARY_DIR}/image1.png"
+)
+
+add_custom_command(
+    TARGET CsvUtilsTests 
+    POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy  
+                     "${CMAKE_CURRENT_SOURCE_DIR}/../testFiles/image2.png" 
+                     "${CMAKE_CURRENT_BINARY_DIR}/image2.png"
+)
+
+add_custom_command(
+    TARGET CsvUtilsTests 
+    POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy  
+                     "${CMAKE_CURRENT_SOURCE_DIR}/../testFiles/image3.png" 
+                     "${CMAKE_CURRENT_BINARY_DIR}/image3.png"
+)
+
+add_custom_command(
+    TARGET CsvUtilsTests 
+    POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy  
+                     "${CMAKE_CURRENT_SOURCE_DIR}/../testFiles/image4.png" 
+                     "${CMAKE_CURRENT_BINARY_DIR}/image4.png"
+)

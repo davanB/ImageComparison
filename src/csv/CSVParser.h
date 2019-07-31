@@ -13,7 +13,8 @@ namespace ImageComparison
         std::vector<InputCSVData> ParseCSVFile() const;
 
         private:
-        bool FileExists() const;
+        bool FileExists(const std::string& file) const;
+        bool InputFileExists() const;
 
         std::string mFilePath;
     };
