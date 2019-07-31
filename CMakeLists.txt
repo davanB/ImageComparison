@@ -29,12 +29,10 @@ if(CMAKE_CXX_COMPILER_ID MATCHES GNU)
         file(GLOB_RECURSE COVERAGE_SRCS "src/*.cpp" "src/*.h")
 
         # Create the coveralls target.
-        if (COVERALLS)
         coveralls_setup(
             "${COVERAGE_SRCS}" 
             ${COVERALLS_UPLOAD}                 
             "${PROJECT_SOURCE_DIR}/coveralls-cmake/cmake")
-        endif()
     endif()
 endif()
 
