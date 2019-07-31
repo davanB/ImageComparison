@@ -14,19 +14,6 @@
 
 namespace ImageComparison
 {
-    static double AverageHashCalc(const std::string& imageOne, const std::string& imageTwo) {
-        cv::Mat imageOneMatrix = cv::imread(imageOne);
-        cv::Mat imageTwoMatrix = cv::imread(imageTwo);
-
-        cv::Mat hashA;
-        cv::Mat hashB;
-        auto func = cv::img_hash::AverageHash::create();
-        func->compute(imageOneMatrix, hashA);
-        func->compute(imageTwoMatrix, hashB);
-
-        return func->compare(hashA, hashB);
-    }
-    
     std::vector<OutputCSVData> SimularityEngine::GenerateSimularity(const std::vector<InputCSVData>& imagePairs) {
         unsigned long const minPerThread = 5;
         unsigned long const maxThreads = (imagePairs.size() + minPerThread - 1)/minPerThread;
@@ -76,5 +63,18 @@ namespace ImageComparison
         OutputCSVData output(pair, hash, duration);
         //OutputCSVData output(pair, 5, 5);
         return output;
+    }
+
+        double SimularityEngine::AverageHashCalc(const std::string& imageOne, const std::string& imageTwo) {
+        cv::Mat imageOneMatrix = cv::imread(imageOne);
+        cv::Mat imageTwoMatrix = cv::imread(imageTwo);
+
+        cv::Mat hashA;
+        cv::Mat hashB;
+        auto func = cv::img_hash::AverageHash::create();
+        func->compute(imageOneMatrix, hashA);
+        func->compute(imageTwoMatrix, hashB);
+
+        return func->compare(hashA, hashB);
     }
 }

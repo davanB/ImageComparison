@@ -1,4 +1,5 @@
 dist: Xenial
+sudo: true
 language: cpp
 
 os:
@@ -11,7 +12,7 @@ compiler:
   - g++
   
 before_install:
-  - pip install cpp-coveralls
+  - sudo pip install cpp-coveralls
   - brew install opencv
 
 script:

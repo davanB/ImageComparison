@@ -4,6 +4,9 @@
 
 namespace ImageComparison
 {
+    /*
+    @brief: Used to package data read from the input CSV file.
+     */
     class InputCSVData {
         public:
         explicit InputCSVData(const std::string& imageOne, const std::string& imageTwo) noexcept;

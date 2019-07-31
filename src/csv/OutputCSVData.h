@@ -5,6 +5,9 @@
 
 namespace ImageComparison
 {
+    /*
+    @brief: Used to package the image simularity calculations to eventually be writen to the output file.
+     */
     class OutputCSVData {
         public:
         explicit OutputCSVData(InputCSVData imagePair, double simularityScore, float secondsTaken) noexcept;

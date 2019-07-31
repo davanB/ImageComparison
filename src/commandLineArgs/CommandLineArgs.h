@@ -4,6 +4,9 @@
 
 namespace ImageComparison
 {
+    /*
+    @brief: Used to package command line arguments previusly parsed
+     */
     class CommandLineArgs {
         public:
         explicit CommandLineArgs(std::string&& inputFile, std::string&& outputFile) noexcept;

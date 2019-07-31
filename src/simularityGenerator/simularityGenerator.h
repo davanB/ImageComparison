@@ -6,6 +6,9 @@
 
 namespace ImageComparison
 {
+    /*
+    @brief: Image simularity calculation interface.
+     */
     class SimularityGenerator {
         public:
         virtual std::vector<OutputCSVData> GenerateSimularity(const std::vector<InputCSVData>& imagePairs) = 0;

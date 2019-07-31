@@ -7,6 +7,10 @@
 
 namespace ImageComparison
 {
+    /*
+    @brief: Used to write out final results to csv file.
+    This class will create the output file if it does not already exist.
+     */
     class CSVWriter {
         public:
         CSVWriter(const std::string& outputFile);
