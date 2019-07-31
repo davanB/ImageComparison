@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.com/davanB/ImageComparison.svg?branch=master)](https://travis-ci.com/davanB/ImageComparison/builds)
-[![Coverage Status](https://coveralls.io/repos/github/davanB/ImageComparison/badge.svg?branch=master)](https://coveralls.io/github/davanB/ImageComparison?branch=master)
 
 
 # Image Comparison
@@ -166,6 +165,10 @@ A GUI can be built to serve as a wrapper for the C++ command line tool. This wou
 ### Code statistics and analysis
 
 Many CI add-ons exist for open source projects. Code coverage and static analysis for complexity can be done after builds with their results uploaded. Once set up their data can be read for every build for the lifetime of the project which can provide insight. I could not get code coverage to work and connecting to any other service was not a priority.
+
+### Testing on Windows
+
+I never got around to testing on windows right. It would error on Travis-CI to difference in setup. Never got around to trying appveyor. Docker might have helped with this.
 
 ## Acknowledgments
 

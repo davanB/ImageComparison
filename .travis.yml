@@ -1,10 +1,7 @@
-dist: Xenial
-sudo: true
 language: cpp
 
 os:
   - osx
-  - linux
 
 compiler:
   - clang
