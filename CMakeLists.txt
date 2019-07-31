@@ -24,10 +24,10 @@ option(COVERALLS "Turn on coveralls support" OFF)
 option(COVERALLS_UPLOAD "Upload the generated coveralls json" ON)
 
 if (COVERALLS)
-    include(Coveralls)
+    include(cmake/Coveralls.cmake)
     coveralls_turn_on_coverage()
 
-    file(GLOB_RECURSE COVERAGE_SRCS "*.cpp" "*.h")
+    file(GLOB_RECURSE COVERAGE_SRCS "src/*.cpp" "src/*.h")
 
     # Create the coveralls target.
     if (COVERALLS)

@@ -13,15 +13,8 @@ before_install:
   - brew install opencv
 
 script:
-  - mkdir build
-  - cd build
-  - cmake -DCOVERALLS=ON -DCMAKE_BUILD_TYPE=Debug ..
-  - cmake --build .
+  - mkdir build && cd build && cmake -DCOVERALLS=ON -DCMAKE_BUILD_TYPE=Debug .. && cmake --build . && cmake --build . --target coveralls
   - ctest
-
-after_success:
-  - cd ..
-  - coveralls --verbose --include src/ --exclude build/test --exclude build/lib --exclude build/googletest --gcov-options '\-lp'
 
 notifications:
   email: false
