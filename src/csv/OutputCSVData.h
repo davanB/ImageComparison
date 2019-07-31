@@ -7,19 +7,19 @@ namespace ImageComparison
 {
     class OutputCSVData {
         public:
-        explicit OutputCSVData(InputCSVData imagePair, uint64_t simularityScore, float secondsTaken) noexcept;
+        explicit OutputCSVData(InputCSVData imagePair, double simularityScore, float secondsTaken) noexcept;
         ~OutputCSVData() = default;
 
         OutputCSVData(OutputCSVData&& other) noexcept;
         OutputCSVData& operator=(OutputCSVData&& other) noexcept;
 
         InputCSVData GetImagePair() const noexcept;
-        uint64_t GetSimularityScore() const noexcept;
+        double GetSimularityScore() const noexcept;
         float GetSecondsTaken() const noexcept;
 
         private:
         InputCSVData mImagePair;
-        uint64_t mSimularityScore;
+        double mSimularityScore;
         float mSecondsTaken;
     };
 }

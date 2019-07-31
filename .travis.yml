@@ -10,11 +10,12 @@ compiler:
   
 before_install:
   - pip install cpp-coveralls
+  - brew install opencv
 
 script:
   - mkdir build
   - cd build
-  - cmake -DCOVERAGE=1 ..
+  - cmake -DCOVERALLS=ON -DCMAKE_BUILD_TYPE=Debug ..
   - cmake --build .
   - ctest
 

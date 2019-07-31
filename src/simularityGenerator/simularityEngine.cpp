@@ -7,29 +7,26 @@
 #include <chrono>
 
 // OpenCV
-//#include "opencv4/opencv2/core.hpp"
-//#include "opencv4/opencv2/core/ocl.hpp"
-//#include "opencv4/opencv2/highgui.hpp"
-//#include "opencv4/opencv2/img_hash.hpp"
+#include <opencv2/core.hpp>
+#include <opencv2/core/ocl.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/img_hash.hpp>
 
 namespace ImageComparison
 {
-    /*
     static double AverageHashCalc(const std::string& imageOne, const std::string& imageTwo) {
         cv::Mat imageOneMatrix = cv::imread(imageOne);
         cv::Mat imageTwoMatrix = cv::imread(imageTwo);
 
         cv::Mat hashA;
         cv::Mat hashB;
-        cv::Ptr<cv::img_hash::ImgHashBase> func;
-        func = cv::img_hash::AverageHash::create();
+        auto func = cv::img_hash::AverageHash::create();
         func->compute(imageOneMatrix, hashA);
         func->compute(imageTwoMatrix, hashB);
 
         return func->compare(hashA, hashB);
     }
-    */
-
+    
     std::vector<OutputCSVData> SimularityEngine::GenerateSimularity(const std::vector<InputCSVData>& imagePairs) {
         unsigned long const minPerThread = 5;
         unsigned long const maxThreads = (imagePairs.size() + minPerThread - 1)/minPerThread;
@@ -71,13 +68,13 @@ namespace ImageComparison
         using namespace std::chrono;
         high_resolution_clock::time_point t1 = high_resolution_clock::now();
         
-        //double hash = AverageHashCalc(pair.GetImageOne(), pair.GetImageTwo());
+        double hash = AverageHashCalc(pair.GetImageOne(), pair.GetImageTwo());
 
         high_resolution_clock::time_point t2 = high_resolution_clock::now();
-        auto duration = duration_cast<milliseconds>( t2 - t1 ).count()/1000;
+        auto duration = duration_cast<microseconds>( t2 - t1 ).count();
 
-        //OutputCSVData output(pair, hash, duration);
-        OutputCSVData output(pair, 5, 5);
+        OutputCSVData output(pair, hash, duration);
+        //OutputCSVData output(pair, 5, 5);
         return output;
     }
 }
